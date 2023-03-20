@@ -1,11 +1,28 @@
 import  express  from "express";
 import morgan from "morgan";
+import cors from "cors";
+import path from "path";
 
 
 console.log("hellouda world");
 //Instanciamos express
-const app = express()
-app.use(morgan(`dev`))
+const app = express();
+
+//MIDD------------------------------
+
+//Configuramos morgan para recibir res de peticiones
+app.use(morgan(`dev`));
+
+//Cors  peticionar remotamente
+app.use(cors());
+
+//Express para interpretar Json Format
+app.use(express.json());
+app.use(express.urlencoded({extended:true}))
+//path para encontrar el directorio
+app.use(express.static(path.join(__dirname,`../public`)));
+console.log(path.join(__dirname,`../public`))
+
 //Creacion de variable para apoderarnos del puerto 4000
 
 app.set("port", process.env.PORT || 4000);
