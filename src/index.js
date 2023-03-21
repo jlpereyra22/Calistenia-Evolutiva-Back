@@ -2,6 +2,7 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import path from "path";
+import clienteRouter from "./routes/clientes.routes"
 import "./database"
 
 const app = express();
@@ -21,6 +22,4 @@ console.log(path.join(__dirname, "../public"));
 
 
 
-app.get(`/prueba`, (req, res) => {
-  res.send("Esto es una prueba de configuracion de Rutas");
-});
+app.use("/calistenia", clienteRouter)

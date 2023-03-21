@@ -9,3 +9,4 @@ const connect = mongoose.connection;
 connect.once(`open`, () => {
   console.log("DB connect");
 })
+
