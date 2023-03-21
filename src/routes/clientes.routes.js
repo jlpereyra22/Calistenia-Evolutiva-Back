@@ -1,12 +1,10 @@
 import { Router } from "express";
+import { agregarCliente, listarClientes } from "../controllers/clientes.controllers";
 
 const router = Router();
 
 router.route("/clientes")
-.get((req,res)=>{
-    res.send("Aqui devolveremos un arreglo con los clientes")
-}).post((req,res)=>{
-    res.send("Esto es una prueba de la peticion GET")
-})
+.get(listarClientes)
+.post(agregarCliente)
 
 export default router;
