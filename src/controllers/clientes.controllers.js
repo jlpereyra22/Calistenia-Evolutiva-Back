@@ -32,3 +32,16 @@ export const agregarCliente= async(req,res)=>{
     }
    
 };
+
+export const obtenerCliente = async (req,res)=>{
+    try {
+        console.log(req.params.id)
+        const clienteBuscado = await cliente.findById(req.params.id);
+        res.status(200).json(clienteBuscado);
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            mensaje:"Error no se pudo encontrar el cliente"
+        })
+    }
+}
