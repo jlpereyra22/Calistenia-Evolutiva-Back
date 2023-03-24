@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { agregarCliente, editarCliente, listarClientes, obtenerCliente } from "../controllers/clientes.controllers";
+import { agregarCliente, borrarCliente, editarCliente, listarClientes, obtenerCliente } from "../controllers/clientes.controllers";
 
 const router = Router();
 
@@ -10,7 +10,7 @@ router.route("/clientes")
 router.route("/clientes/:id")
 .get(obtenerCliente)
 .put(editarCliente)
-.delete()    
+.delete(borrarCliente)    
 
 
 export default router;

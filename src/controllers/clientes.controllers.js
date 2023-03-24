@@ -59,4 +59,18 @@ export const editarCliente = async (req, res)=>{
             mensaje:"Error el producto no pudo ser actualizado"
         })
     }
+};
+
+export const borrarCliente = async (req,res)=>{
+    try {
+        await cliente.findByIdAndDelete(req.params.id);
+        res.status(200).json({
+            mensaje:"Cliente eliminado correctamente"
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(404).json({
+            mensaje:"Error, el cliente no pudo ser eliminado"
+        })
+    }
 }
