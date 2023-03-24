@@ -3,6 +3,8 @@ import { agregarCliente, borrarCliente, editarCliente, listarClientes, obtenerCl
 
 const router = Router();
 
+//Rutas para clientes
+
 router.route("/clientes")
 .get(listarClientes)
 .post(agregarCliente)
@@ -11,6 +13,8 @@ router.route("/clientes/:id")
 .get(obtenerCliente)
 .put(editarCliente)
 .delete(borrarCliente)    
+
+
 
 
 export default router;
