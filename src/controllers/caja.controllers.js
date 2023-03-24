@@ -28,4 +28,47 @@ export const agregarAsiento = async(req,res)=>{
         mensaje:"Error al agregar un Asiento"
      })   
     }
+};
+
+
+export const obtenerAsiento = async (req,res)=>{
+try {
+    console.log(req.params.id)
+    const clienteBuscado = await caja.findById(req.params.id);
+    res.status(200).json(clienteBuscado);
+} catch (error) {
+    console.log(error);
+        res.status(404).json({
+            mensaje:"Error no se pudo encontrar el asiento"
+        })
+}
+};
+
+export const editarAsiento= async (req,res)=>{
+    try {
+        await caja.findByIdAndUpdate(req.params.id,req.body);
+        res.status(200).json({
+            mensaje:"El asiento fue actualizado con exito"
+        })
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            mensaje:"Error el asiento no pudo ser actualizado"
+        })
+    }
+};
+
+
+export const borrarAsiento = async (req,res)=>{
+    try {
+        await caja.findByIdAndDelete(req.params.id);
+        res.status(200).json({
+            mensaje:"Cliente eliminado correctamente"
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(404).json({
+            mensaje:"Error, el cliente no pudo ser eliminado"
+        })
+    }
 }
