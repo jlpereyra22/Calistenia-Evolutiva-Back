@@ -44,4 +44,19 @@ export const obtenerCliente = async (req,res)=>{
             mensaje:"Error no se pudo encontrar el cliente"
         })
     }
+};
+
+
+export const editarCliente = async (req, res)=>{
+    try {
+        await cliente.findByIdAndUpdate(req.params.id,req.body);
+        res.status(200).json({
+            mensaje:"El cliente fue actualizado con exito"
+        })
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            mensaje:"Error el producto no pudo ser actualizado"
+        })
+    }
 }
