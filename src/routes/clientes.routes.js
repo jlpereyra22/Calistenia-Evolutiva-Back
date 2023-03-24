@@ -3,7 +3,7 @@ import { agregarCliente, borrarCliente, editarCliente, listarClientes, obtenerCl
 
 const router = Router();
 
-//Rutas para clientes
+
 
 router.route("/clientes")
 .get(listarClientes)

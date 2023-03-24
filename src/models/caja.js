@@ -33,4 +33,8 @@ const cajaSchema = new Schema({
       },
       
     }
-)
+);
+
+
+const caja = mongoose.model("caja",cajaSchema);
+export default caja;

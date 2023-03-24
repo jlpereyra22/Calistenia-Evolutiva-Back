@@ -2,7 +2,8 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import path from "path";
-import clienteRouter from "./routes/clientes.routes"
+import clienteRouter from "./routes/clientes.routes";
+import cajaRouter from "./routes/caja.routes";
 import "./database"
 
 const app = express();
@@ -23,3 +24,4 @@ console.log(path.join(__dirname, "../public"));
 
 
 app.use("/calistenia", clienteRouter)
+app.use("/calistenia", cajaRouter)
