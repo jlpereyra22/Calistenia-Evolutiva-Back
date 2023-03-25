@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { agregarCliente, borrarCliente, editarCliente, listarClientes, obtenerCliente } from "../controllers/clientes.controllers";
-
+import { check } from "express-validator";
 const router = Router();
 
 
