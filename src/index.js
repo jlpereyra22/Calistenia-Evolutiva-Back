@@ -4,7 +4,8 @@ import cors from "cors";
 import path from "path";
 import clienteRouter from "./routes/clientes.routes";
 import cajaRouter from "./routes/caja.routes";
-import "./database"
+import "./database";
+import usuarioRoutes from "./routes/usuario.routes";
 
 const app = express();
 
@@ -25,3 +26,4 @@ console.log(path.join(__dirname, "../public"));
 
 app.use("/calistenia", clienteRouter)
 app.use("/calistenia", cajaRouter)
+app.use("/calistenia",usuarioRoutes)

@@ -1,7 +1,7 @@
 import mongoose, {Schema} from "mongoose";
 
 const usuarioSchema = new Schema({
-Usurio:{
+Usuario:{
     type: String,
     required:true,
     minLenght:5,
@@ -14,3 +14,6 @@ Contraseña:{
     maxLenght:50
 }
 });
+
+const usuario = mongoose.model("usuario",usuarioSchema);
+export default usuario;
