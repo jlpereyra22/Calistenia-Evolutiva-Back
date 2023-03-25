@@ -56,6 +56,12 @@ export const obtenerCliente = async (req,res)=>{
 
 export const editarCliente = async (req, res)=>{
     try {
+        const errores = validationResult(req);
+        if(!errores.isEmpty()){
+            return res.status(400).json({
+                errores:errores.array()
+            })
+        }
         await cliente.findByIdAndUpdate(req.params.id,req.body);
         res.status(200).json({
             mensaje:"El cliente fue actualizado con exito"
