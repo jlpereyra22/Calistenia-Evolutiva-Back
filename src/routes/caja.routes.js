@@ -25,7 +25,7 @@ routerCaja.route("/cajaDiaria")
     check("Operador")
     .notEmpty()
     .withMessage("Este es un dato obligatorio")
-    .isLength({min: 5, max: 50})
+    .isLength({min: 1, max: 50})
     .withMessage("Debe respetar las limitaciones de caracteres")
 ],agregarAsiento)
 
