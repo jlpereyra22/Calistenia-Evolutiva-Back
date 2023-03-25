@@ -1,3 +1,4 @@
+import { validationResult } from "express-validator";
 import cliente from "../models/cliente"
 
 export const listarClientes = async(req,res)=>{
@@ -16,6 +17,12 @@ export const listarClientes = async(req,res)=>{
 
 export const agregarCliente= async(req,res)=>{
     try {
+        const errores = validationResult(req);
+        if(!errores.isEmpty()){
+            return res.status(400).json({
+                errores:errores.array()
+            })
+        }
         console.log(req.body);
         const clienteNuevo= new cliente(req.body);
         await clienteNuevo.save();
