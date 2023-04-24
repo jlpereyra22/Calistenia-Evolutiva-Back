@@ -1,6 +1,12 @@
 import mongoose, {Schema} from "mongoose";
 
 const usuarioSchema = new Schema({
+Nombre:{
+    type:String,
+    required:true,
+    minLenght:2,
+    maxLenght:40
+},    
 Usuario:{
     type: String,
     required:true,
@@ -12,6 +18,11 @@ Contraseña:{
     required:true,
     minLenght:4,
     maxLenght:50
+},
+Rol:{
+    type:String,
+    required:true,
+    
 }
 });
 
