@@ -59,3 +59,50 @@ export const login = async (req, res) => {
     });
   }
 };
+
+export const obtenerUsuario = async (req,res)=>{
+  try {
+      console.log(req.params.id)
+      const usuarioBuscado = await cliente.findById(req.params.id);
+      res.status(200).json(usuarioBuscado);
+  } catch (error) {
+      console.log(error);
+      res.status(404).json({
+          mensaje:"Error no se pudo encontrar el usuario"
+      })
+  }
+};
+
+export const editarUsuario = async (req, res)=>{
+  try {
+      const errores = validationResult(req);
+      if(!errores.isEmpty()){
+          return res.status(400).json({
+              errores:errores.array()
+          })
+      }
+      await cliente.findByIdAndUpdate(req.params.id,req.body);
+      res.status(200).json({
+          mensaje:"El usuario fue actualizado con exito"
+      })
+  } catch (error) {
+      console.log(error);
+      res.status(404).json({
+          mensaje:"Error el usuario no pudo ser actualizado"
+      })
+  }
+};
+
+export const borrarUsuario = async (req,res)=>{
+  try {
+      await cliente.findByIdAndDelete(req.params.id);
+      res.status(200).json({
+          mensaje:"Usuario eliminado correctamente"
+      })
+  } catch (error) {
+      console.log(error)
+      res.status(404).json({
+          mensaje:"Error, el usuaario no pudo ser eliminado"
+      })
+  }
+}
