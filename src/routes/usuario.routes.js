@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { agregarUsuario, borrarUsuario, editarUsuario, listarUsuarios, login } from "../controllers/usuario.controllers";
+import { agregarUsuario, borrarUsuario, editarUsuario, listarUsuarios, login, obtenerUsuario } from "../controllers/usuario.controllers";
 
 const usuarioRouter = Router();
 
@@ -29,6 +29,7 @@ usuarioRouter.route("/usser")
 ],agregarUsuario)
  
 usuarioRouter.route("/usser/:id")
+.get(obtenerUsuario)
 .put([
     check("Nombre")
     .notEmpty()
